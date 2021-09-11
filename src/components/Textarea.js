@@ -65,13 +65,15 @@ const clearText = ()=>
         <div className="container my-6">
 
             <h1 style={props.Style} className='my-6 font h1' >Enter Your Text to be Analyzed.</h1>
-            <textarea required value={text} onChange={handleOnChange} type="password" id="inputPassword5" className="form-control"></textarea>
+            <textarea style={props.TextStyle} required value={text} onChange={handleOnChange} type="password" id="inputPassword5" className="form-control"></textarea>
+            <div className='my-3'>
             <button onClick={convertUppercase} type="button" className="btn btn-danger my-2 mx-2">Convert it to UpperCase</button>
             <button onClick={convertLowercase} type="button" className="btn btn-danger my-2 mx-2">Convert it to LowerCase</button>
             <button onClick={removePunctuation} type="button" className="btn btn-danger my-2 mx-2">Remove Punctuation</button>
             <button onClick={removeExtraSpace} type="button" className="btn btn-danger my-2 mx-2">Remove Extra Space</button>
             <button onClick={clearText} type="button" className="btn btn-danger my-2 mx-2">Clear Text</button>
-            <p style={props.Style} className='my-3'>{text.split(' ').length} Words, {text.length} Characters</p>
+            </div>
+            <p style={props.Style} className='my-3'>{text.split(' ').filter((element)=>{return element.length!==0}).length} Words, {text.length} Characters</p>
             <h2 className='font' style={props.Style} className='my-2 font'>Preview Text</h2>
             <div className='font'  style={props.Style}><p>{text.length>0?text:"Enter text in the Above Text box to Preview the Text"}</p></div>
         </div>

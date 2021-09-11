@@ -8,13 +8,18 @@ import React, { useState } from 'react'
 
 function App() {
 
-  const [mode, setMode] = useState('light')
+    const [mode, setMode] = useState('light')
     const[modeText,setModeText] = useState('Enable Dark Mode')
     const [alert, setAlert] = useState(null)
+    const [TextStyle, setTextStyle] = useState({
+            
+           
+    })
+
     const [Style, setStyle] = useState({
         color:'black'
     })
-
+   
     const showAlert = (type,msg)=>
     {
         setAlert({
@@ -33,8 +38,12 @@ function App() {
             setModeText('Dark Mode Enabled')
             setStyle({             
                 color:'white',
-                fontFamily: "'Abel', sans-serif"
+                fontFamily: "'Abel', sans-serif",
                 
+            })
+            setTextStyle({
+                backgroundColor:'rgb(10, 10, 34)',
+                color:'white',
             })
             document.body.style.backgroundColor="#010131";
             showAlert('Theme changed!','Dark mode has been enabled')
@@ -44,7 +53,11 @@ function App() {
             setMode('light')
             setModeText('Enable Dark Mode')
             setStyle({
-                color:'black'
+                color:'black',
+            })
+            setTextStyle({
+                backgroundColor:'white',
+                color:'black',
             })
             document.body.style.backgroundColor="white";
             showAlert('Theme changed!','Light mode has been enabled')
@@ -54,7 +67,7 @@ function App() {
   <>
   <Navbar title='TextUtils'  Style = {Style} modeText = {modeText} enableMode = {enableMode} mode={mode}/>
   <Alerts alert={alert} />
-  <Textarea showAlert={showAlert} Style={Style}/>
+  <Textarea TextStyle = {TextStyle} showAlert={showAlert} Style={Style}/>
   </>
 
   );
